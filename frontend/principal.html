@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="principal-container">
+        <h2>Bem-vindo à tela Principal!</h2>
+        <p>Esta é a página principal da sua aplicação.</p>
+        <button onclick="logout()">Logout</button>
+    </div>
+    <script>
+
+        function logout() {
+            // Limpar informação de login da sessionStorage
+            sessionStorage.removeItem('isLoggedIn');
+            sessionStorage.removeItem('isAdmin');
+            // Redirecionar de volta para a página de Login
+            window.location.href = 'login.html';
+        }
+        function createButton() {
+            let btn = document.createElement('BUTTON');
+            let nomeBtn = document.createTextNode("Administrar Site");
+            btn.appendChild(nomeBtn);
+            btn.onclick = function () {
+                window.history.go(0);
+            }
+            document.body.appendChild(btn);
+        }
+
+        // Verificar se o usuário está logado ao carregar a página
+        window.onload = function () {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+            const isAdmin = sessionStorage.getItem('isAdmin');
+            
+            if (!isLoggedIn) {
+                // Redirecionar para a página de Login se não estiver logado
+                window.location.href = 'login.html';
+            }
+            else if (isAdmin) {
+                createButton()
+            }
+        }
+    </script>
+</body>
+
+</html>
