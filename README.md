@@ -1,2 +1,2 @@
-# Validação de Login com Verificação no Banco de Dados
- Sistema de validação de login
+# Validação de Login 
+ Sistema de validação de login, com verificação no banco de dados.
